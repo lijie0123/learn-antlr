@@ -1,0 +1,29 @@
+package prop;
+
+import org.antlr.v4.runtime.TokenStream;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class propLoader extends  propParser{
+    Map<String,String> props;
+    public propLoader(TokenStream input) {
+        super(input);
+    }
+
+    @Override
+    void startfile() {
+        props = new HashMap<>();
+    }
+
+    @Override
+    void endfile() {
+
+    }
+
+    @Override
+    void defineProp(String l, String r) {
+        props.put(l,r);
+        System.out.printf("%s=%s\n", l, r);
+    }
+}
